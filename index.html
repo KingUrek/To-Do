@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo list</title>
+
+    <link rel="stylesheet" href="model.css">
+    <link id="theme-link" rel="stylesheet" href="cyperpunk-css.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f08fe3bd74.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="SignIn.css">
+
+</head>
+<body>
+<div class="sign-in-forms">
+    <label for="name-input">How would you like to be called?</label><br>
+    <input id="name-input" type="text"><br>
+
+
+    <label for="sex-input">Gender?</label><br>
+    <input id="sex-input" list="sex">
+    <datalist id="sex">
+        <option value="M"></option>
+        <option value="F"></option>
+    </datalist>
+
+    <button class="sign-in-submit-button" onclick="signInFormsSubmit()">Submit</button>
+</div>
+<div class="sign-in-bg"></div>
+
+<div id="model" class="model" >
+
+        <div class="model-head">
+            <span class="model-title">Add Task</span>
+            <i class="far fa-window-close close-button" onclick="closeAddTask()"></i>
+        </div><br>
+        <div class="model-body">
+            <div class="task-title-container">
+                <label for="model-task-input">Task Title</label><br>
+                <input id="model-task-input" type="text">
+            </div>
+
+            <div class="priority-container">
+                <label for="model-priority">Priority?</label><br>
+                <input id="model-priority" type="checkbox"><br><br>
+                <label for="model-favorited">Favorite?</label><br>
+                <input id="model-favorited" type="checkbox">
+            </div>
+<!--            TODO:IMPLEMENTAR TAGS E COMENTÁRIOS-->
+            <div class="tag-container">
+                <label for="model-tag-input">Tags</label><br>
+                <input id="model-tag-input" type="text" placeholder="Ainda não implementado">
+            </div>
+
+            <div class="model-comments-container">
+                <label for="model-comments">Comments</label><br>
+                <textarea id="model-comments" type="text" placeholder="Ainda não implementado"></textarea>
+            </div>
+
+            <button class="send-button" onclick="makeTask()">Confirm</button>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+<div class="model-bg " id="model-background"  onclick="closeAddTask()"></div>
+
+<nav class="sidebar">
+    <ul class="icon-container">
+        <li class="sidebar-item selected ">
+            <a href="#" class="sidebar-link">
+                <i class="fas fa-tasks sidebar-icon  "></i>
+                <span class="sidebar-link-text">Tasks</span>
+            </a>
+
+        </li>
+
+<!--        <li class="sidebar-item">-->
+<!--            <a href="#" class="sidebar-link">-->
+<!--                <i class="fas fa-palette sidebar-icon"></i>-->
+<!--                <span class="sidebar-link-text">Themes</span>-->
+<!--            </a>-->
+
+<!--        </li>-->
+
+        <li class="sidebar-item" onclick="changeTheme('cyberpunk')">
+            <a href="#" class="sidebar-link">
+                <i class="fas fa-robot sidebar-icon"></i>
+                <span class="sidebar-link-text">CyberPunk</span>
+            </a>
+
+        </li>
+
+        <li class="sidebar-item" onclick="changeTheme('trybe')">
+            <a href="#" class="sidebar-link">
+                <i class="fas fa-campground sidebar-icon"></i>
+                <span class="sidebar-link-text">Trybe</span>
+            </a>
+
+        </li>
+
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+                <i class="far fa-calendar sidebar-icon"></i>
+                <span class="sidebar-link-text">Calendar</span>
+            </a>
+
+         </li>
+
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+                <i class="fas fa-cog sidebar-icon"></i>
+                <span class="sidebar-link-text">Configure</span>
+            </a>
+
+         </li>
+    </ul>
+</nav>
+
+<div class="profile-bar">
+    <div class="profile-picture">
+        <img id="profile-picture-id" src="Imagens/woman.svg" alt="profile-picture">
+        <div class="profile-notification">5</div>
+    </div>
+
+
+    <div id="text-container">
+        <p class="profile-text">Good Night, Gabriel</p>
+        <p class="profile-date"><span class="date-day">Saturday</span>,4 March</p>
+    </div>
+
+
+
+</div>
+
+<div class="main">
+    <div class="line"></div>
+    <div class="main-options-box">
+        <div class="add-button" onclick="openAddTask()">
+            <span class="add-button-text"><i class="fas fa-plus add-button-icon"></i>Add task</span>
+        </div>
+
+        <div class="horizontal-line"></div>
+
+        <p class="main-bar-title">projects(WIP)</p>
+        <p class="main-bar-text"><i class="fas fa-clipboard-list sidebar-text-icon" style="color:#2331ff"></i>All</p>
+        <p class="main-bar-text"><i class="fas fa-suitcase sidebar-text-icon" style="color:dodgerblue"></i>projeto 1</p>
+        <p class="main-bar-text"><i class="fas fa-suitcase sidebar-text-icon" style="color:dodgerblue"></i>projeto 2</p>
+
+        <div class="horizontal-line"></div>
+
+        <p class="main-bar-title">filters</p>
+        <p class="main-bar-text" onclick="filterDisplay('favorite',this)"><i class="fas fa-star sidebar-text-icon" style="color:yellow"></i>favorites</p>
+        <p class="main-bar-text" onclick="filterDisplay('important',this)"><i class="fas fa-exclamation-triangle sidebar-text-icon" style="color: #ff1826;"></i>priority</p>
+        <p class="main-bar-text"onclick="filterDisplay('done',this)"><i class="fas fa-check-square sidebar-text-icon" style="color:forestgreen"></i>done</p>
+
+        <div class="horizontal-line"></div>
+
+        <p class="main-bar-title">tags(WIP)</p>
+        <p class="main-bar-text"><i class="fas fa-tag sidebar-text-icon" style="color:#ff9336"></i>trybe</p>
+        <p class="main-bar-text"><i class="fas fa-tag sidebar-text-icon"style="color:#ff9336"></i>javaScript</p>
+        <p class="main-bar-text"><i class="fas fa-tag sidebar-text-icon"style="color:#ff9336"></i>html</p>
+
+    </div>
+    <div class="task-box">
+
+        <div class="search-bar">
+            <i class="fas fa-search search-icon"></i>
+            <input class="search-input" placeholder="Search tasks" type="text">
+
+        </div>
+
+
+        <ul class ="task-container">
+<!--            <li class="task">-->
+<!--                <input type="checkbox" class="checkbox" oninput="changeCheckValue(this)" >-->
+<!--                <p class="task-text">Terminar projeto trybe</p>-->
+<!--                <div class="task-icon-container">-->
+<!--                    <i class="fas fa-star task-icon " onclick="setFavorite(this)"></i>-->
+<!--                    <i class="fas fa-exclamation-triangle task-icon  " onclick="setImportant(this)"></i>-->
+<!--                    <i class="fas fa-trash task-icon" onclick="deleteTask(this)"></i>-->
+<!--                </div>-->
+<!--            </li>-->
+
+
+        </ul>
+
+    </div>
+
+
+</div>
+
+
+
+
+</body>
+<script src="script.js"></script>
+</html>

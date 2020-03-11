@@ -1,0 +1,120 @@
+
+
+.model{
+    position: fixed;
+    height: 800px;
+    width: 700px;
+    background-color: white;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    border-radius: 10px;
+    border:3px solid black;
+    z-index: 300;
+}
+
+.model-bg{
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100vw;
+    height: 100vh;
+    left: 50%;
+    top:50%;
+    opacity: 0.99;
+    z-index: 1;
+    transform:translate(-50%,-50%) scale(0);
+
+
+
+}
+
+.active{
+    transform:translate(-50%,-50%) scale(1);
+
+}
+
+
+
+
+
+.model-head{
+    border-bottom: 2px solid black;
+    display: flex;
+    height: 64px;
+    justify-content: space-between;
+}
+
+.model-body{
+    display: grid;
+    width: 100%;
+
+    grid-template-rows: 130px 230px 300px 40px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.model-title{
+    font-size: 50px;
+    font-family: 'Rubik', sans-serif;
+    margin-left: 60px;
+    }
+
+.close-button{
+    font-size: 50px;
+    cursor: pointer;
+    margin-right: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.model label{
+    font-size: 30px;
+    margin-left:30px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.task-title-container{
+    grid-row:1/2;
+    grid-column: 1/-1;
+}
+
+
+.model-comments-container{
+    grid-row: 3/4;
+    grid-column: 1/-1;
+}
+
+.model input{
+    width: 90%;
+    height:30px;
+    font-size:30px;
+    border-radius:8px;
+    margin-right: auto;
+    margin-left: 30px;
+    overflow: visible;
+    border-style: solid;
+    justify-self: center;
+}
+
+#model-priority{
+    justify-self: start;
+}
+
+textarea{
+    width:90%;
+    height: 40%;
+    margin-left: 30px;
+}
+
+.send-button{
+    grid-column: 2/-1;
+    grid-row: -1/-2;
+    border: none;
+    height: 100%;
+    width: 300px;
+    background-color: #79149a;
+    border-radius: 8px;
+    font-size: 30px;
+    font-family: Roboto,sans-serif;
+    color: white;
+    cursor: pointer;
+}
